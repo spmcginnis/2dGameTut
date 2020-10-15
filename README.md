@@ -1,6 +1,6 @@
 # 2dGameTut
 
-##Some features to think about:
+## Some features to think about:
 - Interaction with objects that change the physics
 - Pinball bumper or springy jump
 - Pinball paddle
@@ -13,7 +13,7 @@
 - animation interactions and triggers
 - health bars / lives gameplay and UI stuff
 
-##Big Picture Stuff
+## Big Picture Stuff
 - procedural pinball
 - seesaw game
 - sonic type platformer
