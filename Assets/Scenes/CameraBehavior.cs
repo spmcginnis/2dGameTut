@@ -62,7 +62,7 @@ public class CameraBehavior : MonoBehaviour
         if (PlayerPos.y > StartPos.y || PlayerPos.y < 0)
         {
             float DeltaFromCurrent = PlayerPos.y - CamPosition.y;
-            CamPosition.y += DeltaFromCurrent / 25;
+            CamPosition.y += DeltaFromCurrent / 10;
             Camera.main.transform.position = CamPosition;
 
         } else
