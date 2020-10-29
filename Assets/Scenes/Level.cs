@@ -12,13 +12,17 @@ public class Level : MonoBehaviour
     void Start()
     {
         var rand = new System.Random();
+
         for (int y = 0; y < height; ++y)
         {
             for (int x = 0; x < width; ++x)
             {
-                int randInt = rand.Next(10);
-                if (x > 10 && randInt > 8)
+                double p = rand.NextDouble();
+                print(p);
+
+                if (x > 10 && p >= 0.5 )
                 {
+                    
                     continue;
                 }
                 else
