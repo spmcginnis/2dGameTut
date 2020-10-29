@@ -4,7 +4,7 @@
 - Interaction with objects that change the physics
 - Pinball bumper or springy jump
 - Pinball paddle
-- Camera movement ... next?
+- Camera movement. We have vertical. Horizontal movement needed.
 - Rocket Pack with fuel
 - Object interaction
 - Win conditions
