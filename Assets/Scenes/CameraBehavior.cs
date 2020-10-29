@@ -68,8 +68,11 @@ public class CameraBehavior : MonoBehaviour
 
         }
 
+        if (Mathf.Abs(PlayerPos.x - CamPosition.x) > 5)
+        {
+            CamPosition.x += (PlayerPos.x - CamPosition.x) / 50;
+        }
         
-        CamPosition.x += (PlayerPos.x - CamPosition.x) / 10;
 
         Camera.main.transform.position = CamPosition;
 
