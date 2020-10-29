@@ -52,52 +52,26 @@ public class CameraBehavior : MonoBehaviour
 
     void FollowBall(Vector2 PlayerPos)
     {
-        //float StartPosY = StartPos.y;
         Vector3 CamPosition = Camera.main.transform.position;
-
-
-        //float DeltaFromStart = Mathf.Abs(CamPosition.y) - Mathf.Abs(StartPos.y);
 
 
         if (PlayerPos.y > StartPos.y || PlayerPos.y < 0)
         {
             float DeltaFromCurrent = PlayerPos.y - CamPosition.y;
             CamPosition.y += DeltaFromCurrent / 10;
-            Camera.main.transform.position = CamPosition;
+ 
 
         } else
         {
             float DeltaFromStart = StartPos.y - CamPosition.y;
             CamPosition.y += DeltaFromStart / 25;
-            Camera.main.transform.position = CamPosition;
+
         }
 
+        
+        CamPosition.x += (PlayerPos.x - CamPosition.x) / 10;
 
-
-
-
-
-
-
-        /*
-                if (Mathf.Abs(DeltaFromStart) < 1.6)
-                {
-                    CamPosition.y = StartPos.y;
-                }
-                else
-                {
-                    CamPosition.y += DeltaFromCurrent / 25;
-                }
-                */
-
-        /*        if (Mathf.Abs(PlayerPos.y) > (StartPosY + 2))
-                {
-
-                }*/
-        /*        else
-                {
-                    CamPosition.y = StartPos.y;
-                }*/
+        Camera.main.transform.position = CamPosition;
 
 
     }

@@ -12,6 +12,8 @@
 - Shooting guns / bubbles / child objects of the PC
 - animation interactions and triggers
 - health bars / lives gameplay and UI stuff
+- generate more levels vertically with random
+- death zone?
 
 ## Big Picture Stuff
 - procedural pinball
