@@ -4,7 +4,8 @@
 public class Level : MonoBehaviour
 {
     public GameObject block;
-    
+    public GameObject springBlock;
+
     [Header("Parameters")]
     public int width = 200;
     public int height = 2;
@@ -24,6 +25,10 @@ public class Level : MonoBehaviour
                 {
                     
                     continue;
+                }
+                else if (x > 10 && p <= 0.1)
+                {
+                    Instantiate(springBlock, new Vector3(x, y, 0), Quaternion.identity);
                 }
                 else
                 {
