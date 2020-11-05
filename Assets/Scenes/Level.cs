@@ -19,7 +19,7 @@ public class Level : MonoBehaviour
             for (int x = 0; x < width; ++x)
             {
                 double p = rand.NextDouble();
-                print(p);
+                //print(p);
 
                 if (x > 10 && p >= 0.5 )
                 {
