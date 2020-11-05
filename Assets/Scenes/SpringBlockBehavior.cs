@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class SpringBlockBehavior : MonoBehaviour
 {
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Start is called before the first frame update
     void OnCollisionEnter2D(Collision2D collision)
     {
-
+        
+        
 
         Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();
 
@@ -20,6 +28,12 @@ public class SpringBlockBehavior : MonoBehaviour
 
         Debug.Log("Rel Vel: " + velocity + "  Reflected Force: " + bounce );
 
+
+        if (velocity.magnitude > 2)
+        {
+            audioSource.Play();
+        }
+        
     }
 
 
