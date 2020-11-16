@@ -9,6 +9,8 @@ public class PlayerCharacter : MonoBehaviour
     public float rocketForce = 20f;
     public float jumpForce = 1000f;
 
+    public float fuelLevel = 0f; // TODO max fuel level
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,24 +60,40 @@ public class PlayerCharacter : MonoBehaviour
         }
 
         Debug.DrawRay(transform.position, Vector2.down * 1.2f, Color.red);
-
-
-
     }
 
 
     void Rocket()
     {
-        Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
+        if (fuelLevel > 0)
+        {
+            Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
 
-        Vector3 movement = new Vector3(0f, Input.GetAxis("Vertical"), 0f);
+            float inputAxisValue = Input.GetAxis("Vertical");
 
-        body.AddForce(movement * rocketForce);
+            Vector3 movement = new Vector3(0f, inputAxisValue, 0f);
 
+            body.AddForce(movement * rocketForce);
+
+            if (inputAxisValue != 0)
+            {
+                Debug.Log("Input axis value: " + inputAxisValue);
+                fuelLevel = Mathf.Max(fuelLevel - Mathf.Abs(inputAxisValue) / 60, 0); // want to change to factor in the framerate
+            }
+            
+        }
     }
 
 
-
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collision with trigger.");
+        if (other.gameObject.CompareTag("Consumable"))
+        {
+            Destroy(other.gameObject);
+            fuelLevel = Mathf.Min(fuelLevel + 1, 10);
+        }
+    }
 
 
 }
