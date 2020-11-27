@@ -26,7 +26,7 @@ public class SpringBlockBehavior : MonoBehaviour
         Vector2 bounce = Vector2.Reflect(velocity, Vector2.up) * 100f;
         body.AddForce(bounce);
 
-        Debug.Log("Rel Vel: " + velocity + "  Reflected Force: " + bounce );
+        //Debug.Log("Rel Vel: " + velocity + "  Reflected Force: " + bounce );
 
 
         if (velocity.magnitude > 2)

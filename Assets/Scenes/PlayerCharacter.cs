@@ -78,7 +78,7 @@ public class PlayerCharacter : MonoBehaviour
             if (inputAxisValue != 0)
             {
                 Debug.Log("Input axis value: " + inputAxisValue);
-                fuelLevel = Mathf.Max(fuelLevel - Mathf.Abs(inputAxisValue) / 60, 0); // want to change to factor in the framerate
+                fuelLevel = Mathf.Max(fuelLevel - Mathf.Abs(inputAxisValue) / 360, 0); // want to change to factor in the framerate
             }
             
         }
@@ -91,7 +91,7 @@ public class PlayerCharacter : MonoBehaviour
         if (other.gameObject.CompareTag("Consumable"))
         {
             Destroy(other.gameObject);
-            fuelLevel = Mathf.Min(fuelLevel + 1, 10);
+            fuelLevel = Mathf.Min(fuelLevel + 0.2f, 1);
         }
     }
 
