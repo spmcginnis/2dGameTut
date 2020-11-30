@@ -14,6 +14,9 @@
 - death zone?
 - Springy animations
 - Endpoint generates new level start
+- Endpoint collision ceases player character control and movement
+- Endpoint transition scene
+- Level timer / score
 
 ## Completed
 - Pinball bumper or springy jump. We've made a springy pad.
@@ -21,8 +24,11 @@
 - Fuel bar UI
 - Rocket boost with fuel and fuel pickups
 - Springy sound effect
+- End goal platform and trigger set
+
+
+
 ## Big Picture Stuff
 - procedural pinball
 - seesaw game
 - sonic type platformer
-

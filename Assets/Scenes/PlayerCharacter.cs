@@ -71,16 +71,10 @@ public class PlayerCharacter : MonoBehaviour
 
             float inputAxisValue = Input.GetAxis("Vertical");
 
-            
-
-
-            
-
             if (Mathf.Abs(inputAxisValue) > 0.1)
             {
                 Vector3 movement = new Vector3(0f, 0.2f, 0f);
                 body.AddForce(movement * rocketForce);
-                Debug.Log("Input axis value: " + inputAxisValue);
                 fuelLevel = Mathf.Max(fuelLevel - 0.001f, 0); // want to change to factor in the framerate
             }
             
@@ -90,12 +84,21 @@ public class PlayerCharacter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision with trigger.");
+        
         if (other.gameObject.CompareTag("Consumable"))
         {
             Destroy(other.gameObject);
             fuelLevel = Mathf.Min(fuelLevel + 0.2f, 1);
         }
+
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            //end level behavior
+            Debug.Log("Collision with end trigger.");
+        }
+
+
+
     }
 
 

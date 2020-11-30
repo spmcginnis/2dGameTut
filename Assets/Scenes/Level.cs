@@ -5,6 +5,7 @@ public class Level : MonoBehaviour
 {
     public GameObject block;
     public GameObject springBlock;
+    public GameObject endGoal;
 
     [Header("Parameters")]
     public int width = 200;
@@ -39,5 +40,17 @@ public class Level : MonoBehaviour
         }
 
         Instantiate(block, new Vector3(0, 1, 0), Quaternion.identity);
+
+        placeGoal(new Vector2(10, 3));
+
+    }
+
+    void placeGoal(Vector2 position) {
+        Instantiate(block, position, Quaternion.identity);
+        Instantiate(block, position + new Vector2(1, 0), Quaternion.identity);
+        Instantiate(block, position + new Vector2(2, 0), Quaternion.identity);
+        Instantiate(block, position + new Vector2(1, 1), Quaternion.identity);
+
+        endGoal.transform.position = position + new Vector2(1, 2);
     }
 }
