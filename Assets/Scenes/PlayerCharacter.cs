@@ -6,7 +6,7 @@ public class PlayerCharacter : MonoBehaviour
 {
     [Header("Movement Parameters")]
     public float speed = 10f;
-    public float rocketForce = 20f;
+    public float rocketForce = 2f;
     public float jumpForce = 1000f;
 
     public float fuelLevel = 0f; // TODO max fuel level
@@ -71,14 +71,17 @@ public class PlayerCharacter : MonoBehaviour
 
             float inputAxisValue = Input.GetAxis("Vertical");
 
-            Vector3 movement = new Vector3(0f, inputAxisValue, 0f);
+            
 
-            body.AddForce(movement * rocketForce);
 
-            if (inputAxisValue != 0)
+            
+
+            if (Mathf.Abs(inputAxisValue) > 0.1)
             {
+                Vector3 movement = new Vector3(0f, 0.2f, 0f);
+                body.AddForce(movement * rocketForce);
                 Debug.Log("Input axis value: " + inputAxisValue);
-                fuelLevel = Mathf.Max(fuelLevel - Mathf.Abs(inputAxisValue) / 360, 0); // want to change to factor in the framerate
+                fuelLevel = Mathf.Max(fuelLevel - 0.001f, 0); // want to change to factor in the framerate
             }
             
         }

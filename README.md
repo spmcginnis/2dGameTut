@@ -13,6 +13,7 @@
 - generate more levels vertically with random
 - death zone?
 - Springy animations
+- Endpoint generates new level start
 
 ## Completed
 - Pinball bumper or springy jump. We've made a springy pad.
