@@ -10,10 +10,9 @@
 - Shooting guns / bubbles / child objects of the PC
 - animation interactions and triggers
 - health bars / lives gameplay and UI stuff
-- generate more levels vertically with random
-- death zone?
+- generate more platforms vertically with random
+- Death zone
 - Springy animations
-- Endpoint generates new level start
 - Endpoint collision ceases player character control and movement
 - Endpoint transition scene
 - Level timer / score
@@ -25,8 +24,8 @@
 - Rocket boost with fuel and fuel pickups
 - Springy sound effect
 - End goal platform and trigger set
-
-
+- Endpoint generates new level start
+- Endpoint message "you won"
 
 ## Big Picture Stuff
 - procedural pinball

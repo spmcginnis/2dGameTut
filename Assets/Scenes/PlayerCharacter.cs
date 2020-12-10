@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerCharacter : MonoBehaviour
 {
@@ -11,10 +12,22 @@ public class PlayerCharacter : MonoBehaviour
 
     public float fuelLevel = 0f; // TODO max fuel level
 
+    public string message = "";
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // StartCoroutine("LevelStart");
+
+    }
+
+    IEnumerable LevelStart() // Currently not working
+    {
+        Debug.Log("LevelStart coroutine started.");
+        message = "Let's play: Capture the Flag!";
+        yield return new WaitForSecondsRealtime(5.5f);
+        message = "";
+        Debug.Log("LevelStart coroutine ended.");
     }
 
     // Update is called once per frame
@@ -25,7 +38,12 @@ public class PlayerCharacter : MonoBehaviour
         Rocket();
     }
 
+    void OnGUI()
+    {
+        
+        GUI.Label(new Rect(Screen.width/2, Screen.height/2, 100, 100), message);
 
+    }
 
 //    FixedUpdate
 
@@ -93,13 +111,29 @@ public class PlayerCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("Finish"))
         {
-            //end level behavior
+
             Debug.Log("Collision with end trigger.");
+            StartCoroutine("EndLevel");
         }
-
-
-
     }
+
+    // end level behavior
+    IEnumerator EndLevel()
+    {
+        // Text: you won!
+        message = "You won!";
+
+
+        // Also stop the motion at flag.
+
+        
+
+        yield return new WaitForSecondsRealtime(4.5f);
+        
+        // Reloads scene.  Eventually it would look for the next scene and load that instead.
+        SceneManager.LoadScene("SampleScene");
+    }
+
 
 
 }
