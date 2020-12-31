@@ -9,43 +9,82 @@ public class Level : MonoBehaviour
 
     [Header("Parameters")]
     public int width = 200;
-    public int height = 2;
+    public int height = 5;
+    public int levelShape = 0;
 
     void Start()
     {
-        var rand = new System.Random();
-
-        for (int y = 0; y < height; ++y)
+        StartingPlatform();
+        
+        if (levelShape == 0)
         {
-            for (int x = 0; x < width; ++x)
-            {
-                double p = rand.NextDouble();
-                //print(p);
-
-                if (x > 10 && p >= 0.5 )
-                {
-                    
-                    continue;
-                }
-                else if (x > 10 && p <= 0.1)
-                {
-                    Instantiate(springBlock, new Vector3(x, y, 0), Quaternion.identity);
-                }
-                else
-                {
-                    Instantiate(block, new Vector3(x, y, 0), Quaternion.identity);
-                }
-
-            }
+            StairCaseLevel(height);
         }
-
-        Instantiate(block, new Vector3(0, 1, 0), Quaternion.identity);
-
-        placeGoal(new Vector2(10, 3));
-
+        else if (levelShape == 1)
+        {
+            PyramidLevel(height, 20);
+        }
+        
+        
+        
     }
 
-    void placeGoal(Vector2 position) {
+    void PyramidLevel(int steps, int run)
+    {
+        int rise = height;
+        for (int i=0; i<steps; i++)
+        {
+            HorizontalLevel(i * run, i * rise, width - ((run *2) * i) );
+        }
+        PlaceGoal(new Vector2(width / 2, steps*rise));
+    }
+
+    void StairCaseLevel(int steps)
+    {
+        int run = width / steps;
+        int rise = height;
+        for (int i = 0; i < steps; i++)
+        {
+            HorizontalLevel(i*run, i * rise, run);
+        }
+        PlaceGoal(new Vector2(width - 2, steps * rise-1));
+    }
+
+    void HorizontalLevel(int x, int y, int width)
+    {
+        var rand = new System.Random();
+        int platformWidth = width + x;
+        for (; x < platformWidth; ++x)
+        {
+            double p = rand.NextDouble();
+            //print(p);
+
+            if (p >= 0.5 )
+            {
+                    
+                continue;
+            }
+            else if (p <= 0.1)
+            {
+                Instantiate(springBlock, new Vector3(x, y, 0), Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(block, new Vector3(x, y, 0), Quaternion.identity);
+            }
+
+        }
+    }
+
+    void StartingPlatform()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Instantiate(block, new Vector3(i-2, 2, 0), Quaternion.identity);
+        }
+    }
+
+    void PlaceGoal(Vector2 position) {
         Instantiate(block, position, Quaternion.identity);
         Instantiate(block, position + new Vector2(1, 0), Quaternion.identity);
         Instantiate(block, position + new Vector2(2, 0), Quaternion.identity);

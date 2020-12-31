@@ -10,12 +10,15 @@
 - Shooting guns / bubbles / child objects of the PC
 - animation interactions and triggers
 - health bars / lives gameplay and UI stuff
-- generate more platforms vertically with random
+- random level pattern selection
 - Dynamic death zone
 - Springy animations
 - Endpoint collision ceases player character control and movement
 - Endpoint transition scene
 - Level timer / score
+- Dynamic zoom to keep player and platforms in same view
+- Add fuel gen to level patterns
+- MORE TRIANGLES!
 
 ## Completed
 - Pinball bumper or springy jump. We've made a springy pad.
@@ -27,6 +30,7 @@
 - Endpoint generates new level start
 - Endpoint message "you won"
 - Static death zone
+- Stair and Pyramid pattern level gen
 
 ## Big Picture Stuff
 - procedural pinball
