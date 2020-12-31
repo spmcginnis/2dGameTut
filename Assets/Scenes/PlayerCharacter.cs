@@ -47,6 +47,7 @@ public class PlayerCharacter : MonoBehaviour
 
 //    FixedUpdate
 
+
     void ForceMove()
     {
         Rigidbody2D body = gameObject.GetComponent<Rigidbody2D>();
@@ -111,9 +112,14 @@ public class PlayerCharacter : MonoBehaviour
 
         if (other.gameObject.CompareTag("Finish"))
         {
-
             Debug.Log("Collision with end trigger.");
             StartCoroutine("EndLevel");
+        }
+
+        if (other.gameObject.CompareTag("DeathZone"))
+        {
+            Debug.Log("Collision with death trigger.");
+            StartCoroutine("PlayerDeath");
         }
     }
 
@@ -123,10 +129,7 @@ public class PlayerCharacter : MonoBehaviour
         // Text: you won!
         message = "You won!";
 
-
         // Also stop the motion at flag.
-
-        
 
         yield return new WaitForSecondsRealtime(4.5f);
         
@@ -134,6 +137,15 @@ public class PlayerCharacter : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
 
+    // ondeath behavior
+    IEnumerator PlayerDeath()
+    {
+        message = "You died!";
 
+        yield return new WaitForSecondsRealtime(3f);
+
+        // Reloads scene.  Eventually it would look for the next scene and load that instead.
+        SceneManager.LoadScene("SampleScene");
+    }
 
 }
